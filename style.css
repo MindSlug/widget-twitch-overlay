@@ -1,0 +1,88 @@
+:root {
+    /* fallback, overwritten by app.js */
+    --bg-color: rgba(30, 30, 30, 0.85);
+    --text-color: #ffffff;
+    --font-size: 16px;
+    --twitch-color: #9146FF;
+    --youtube-color: #FF0000;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: transparent;
+    font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text-color);
+}
+
+#chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+    padding: 15px;
+    box-sizing: border-box;
+    gap: 6px;
+}
+
+.chat-message {
+    background-color: var(--bg-color);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: var(--font-size);
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.35s ease-out forwards;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* platform borders (left) for visual distinction */
+.platform-twitch { border-left: 5px solid var(--twitch-color); }
+.platform-youtube { border-left: 5px solid var(--youtube-color); }
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.badges {
+    display: inline-flex;
+    gap: 4px;
+}
+
+.badges img {
+    height: 18px;
+    width: auto;
+}
+
+.message-content {
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+.emote {
+    height: 1.25em;
+    vertical-align: middle;
+    margin: -0.2em 0.05em;
+    display: inline-block;
+}
+
+/* fallback in case we fail to get the emote */
+.emote[src=""] {
+    display: none;
+}
+
+/* animations */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
